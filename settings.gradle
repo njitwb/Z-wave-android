@@ -1,0 +1,2 @@
+include ':usbSerialLibrary'
+include ':androidZWave'
