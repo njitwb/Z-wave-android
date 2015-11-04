@@ -2,18 +2,18 @@
 <items version="2" >
 
     <item
-        jar="D:\Android\sdk\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
+        jar="/work/Z-wave-android/androidZWave/build/intermediates/exploded-aar/Z-wave-android/usbSerialLibrary/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9733e4ac7e4356b17665a72f55fa4c9ea7dbe6d4">
+        <dex dex="/work/Z-wave-android/androidZWave/build/intermediates/pre-dexed/debug/classes-9cb2d326978c7e892af73b9f87db02b9a9c8fbec.jar" />
+    </item>
+    <item
+        jar="/work/android-sdk-linux/extras/android/m2repository/com/android/support/support-v4/18.0.0/support-v4-18.0.0.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="44ec51e9d395a47aab135e5e1b556c0007442156">
-        <dex dex="C:\Users\asus\Documents\AndroidZ-Wave2\androidZWave\build\intermediates\pre-dexed\debug\support-v4-18.0.0-5c13dae993a3a70564280b74f4a6300075997e8b.jar" />
-    </item>
-    <item
-        jar="C:\Users\asus\Documents\AndroidZ-Wave2\androidZWave\build\intermediates\exploded-aar\AndroidZ-Wave2\usbSerialLibrary\unspecified\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="a377eebc7f681b77a8cab351b3e5254e1204c9a4">
-        <dex dex="C:\Users\asus\Documents\AndroidZ-Wave2\androidZWave\build\intermediates\pre-dexed\debug\classes-9244809c1664caebfdd1e33bda073d5df4983504.jar" />
+        <dex dex="/work/Z-wave-android/androidZWave/build/intermediates/pre-dexed/debug/support-v4-18.0.0-0b3a41539e8dcba707af03af189867b03e6b8e18.jar" />
     </item>
 
 </items>

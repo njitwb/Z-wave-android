@@ -31,6 +31,7 @@ import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import com.azwave.androidzwave.UsbSerialDriver;
 import com.azwave.androidzwave.zwave.items.Msg;
 import com.azwave.androidzwave.zwave.items.QueueItem;
 import com.azwave.androidzwave.zwave.items.QueueManager;
@@ -46,7 +47,6 @@ import com.azwave.androidzwave.zwave.utils.HexDump;
 import com.azwave.androidzwave.zwave.utils.Log;
 import com.azwave.androidzwave.zwave.utils.SafeCast;
 import com.azwave.androidzwave.zwave.utils.XMLManager;
-import com.hoho.android.usbserial.driver.UsbSerialDriver;
 
 public class Driver implements IOServiceListener {
 

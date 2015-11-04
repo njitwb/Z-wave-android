@@ -24,10 +24,10 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.LinkedList;
 
+import com.azwave.androidzwave.UsbSerialDriver;
 import com.azwave.androidzwave.zwave.Defs;
 import com.azwave.androidzwave.zwave.items.QueueManager;
 import com.azwave.androidzwave.zwave.utils.Log;
-import com.hoho.android.usbserial.driver.UsbSerialDriver;
 
 /**
  * Original author: mike wakerly (opensource@hoho.com)

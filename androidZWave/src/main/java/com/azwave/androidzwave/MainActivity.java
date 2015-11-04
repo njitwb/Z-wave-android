@@ -11,8 +11,6 @@ import com.azwave.androidzwave.zwave.items.ControllerCmd.ControllerError;
 import com.azwave.androidzwave.zwave.items.ControllerCmd.ControllerState;
 import com.azwave.androidzwave.zwave.nodes.Node;
 import com.azwave.androidzwave.zwave.nodes.NodeListener;
-import com.hoho.android.usbserial.driver.UsbSerialDriver;
-import com.hoho.android.usbserial.driver.UsbSerialProber;
 
 import android.hardware.usb.UsbManager;
 import android.os.AsyncTask;
@@ -71,12 +69,12 @@ public class MainActivity extends Activity implements NodeListener,
 			} catch (Exception x) {
 			}
 		}
-		super.finish();
+//		super.finish();
 	}
 
 	private void initUsbDriver() {
-		usbManager = (UsbManager) getSystemService(Context.USB_SERVICE);
-		serialDriver = UsbSerialProber.acquire(usbManager);
+//		usbManager = (UsbManager) getSystemService(Context.USB_SERVICE);
+//		serialDriver = UsbSerialProber.acquire(usbManager);
 		if(serialDriver == null)
 			Log.d("ZWAVE", "SerialDriver is null");
 		try {

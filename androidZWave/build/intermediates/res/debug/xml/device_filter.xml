@@ -8,4 +8,4 @@
 	<usb-device vendor-id="5824" product-id="1155"/>
 	<!--  0x10C4 / 0xEA60: CP210x UART Bridge  -->
 	<usb-device vender-id="4292" product-id="60000"/>
-</resources><!-- From: file:/C:/Users/asus/Documents/AndroidZ-Wave2/androidZWave/src/main/res/xml/device_filter.xml -->
+</resources><!-- From: file:/work/Z-wave-android/androidZWave/src/main/res/xml/device_filter.xml -->

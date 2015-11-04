@@ -55,7 +55,6 @@ import com.azwave.androidzwave.zwave.values.ValueManager;
 import com.azwave.androidzwave.zwave.values.ValueShort;
 import com.azwave.androidzwave.zwave.xml.DeviceClass;
 import com.azwave.androidzwave.zwave.xml.GenericDeviceClass;
-import com.hoho.android.usbserial.util.HexDump;
 
 public class Node {
 

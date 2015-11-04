@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import android.content.Context;
 
 import com.azwave.androidzwave.R;
+import com.azwave.androidzwave.UsbSerialDriver;
 import com.azwave.androidzwave.zwave.items.ControllerActionListener;
 import com.azwave.androidzwave.zwave.items.QueueManager;
 import com.azwave.androidzwave.zwave.nodes.Node;
@@ -40,7 +41,6 @@ import com.azwave.androidzwave.zwave.nodes.NodeManager;
 import com.azwave.androidzwave.zwave.utils.Log;
 import com.azwave.androidzwave.zwave.utils.XMLManager;
 import com.azwave.androidzwave.zwave.utils.XMLManagerAndroid;
-import com.hoho.android.usbserial.driver.UsbSerialDriver;
 
 public class Manager {
 
