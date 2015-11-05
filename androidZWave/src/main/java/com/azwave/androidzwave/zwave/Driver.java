@@ -46,7 +46,7 @@ import com.azwave.androidzwave.zwave.utils.HexDump;
 import com.azwave.androidzwave.zwave.utils.Log;
 import com.azwave.androidzwave.zwave.utils.SafeCast;
 import com.azwave.androidzwave.zwave.utils.XMLManager;
-import com.hoho.android.usbserial.driver.UsbSerialDriver;
+import com.hoho.android.usbserial.driver.UsbSerialPort;
 
 public class Driver implements IOServiceListener {
 
@@ -57,20 +57,20 @@ public class Driver implements IOServiceListener {
 	private NodeManager nodeManager;
 	private XMLManager xmlManager;
 	private QueueManager queueManager;
-	private UsbSerialDriver serialDriver;
+	private UsbSerialPort serialPort;
 	private IOService ioService;
 	private ExecutorService ioExecService;
 
 	public Driver(QueueManager queueManager, NodeManager nodeManager,
-			XMLManager xmlmanager, UsbSerialDriver serialDriver, Log log) {
+			XMLManager xmlmanager, UsbSerialPort serialPort, Log log) {
 		this.log = log;
 		this.xmlManager = xmlmanager;
-		this.serialDriver = serialDriver;
+		this.serialPort = serialPort;
 		this.queueManager = queueManager;
 		this.nodeManager = nodeManager;
 
 		this.ioExecService = Executors.newSingleThreadExecutor();
-		this.ioService = new IOService(serialDriver, this, queueManager, log);
+		this.ioService = new IOService(serialPort, this, queueManager, log);
 	}
 
 	public void start() throws IOException {
@@ -254,7 +254,7 @@ public class Driver implements IOServiceListener {
 	}
 
 	public void writeMsg(Msg msg) throws IOException {
-		serialDriver.write(msg.toArray(), Defs.BYTE_TIMEOUT);
+		serialPort.write(msg.toArray(), Defs.BYTE_TIMEOUT);
 		log.add(String.format("W: [Node %d] %s",
 				SafeCast.toInt(SafeCast.nodeIdFromMsg(msg)), msg.toString()));
 	}

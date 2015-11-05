@@ -1,6 +1,7 @@
 package com.azwave.androidzwave;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.azwave.androidzwave.R;
 import com.azwave.androidzwave.module.NodeListAdapter;
@@ -11,9 +12,13 @@ import com.azwave.androidzwave.zwave.items.ControllerCmd.ControllerError;
 import com.azwave.androidzwave.zwave.items.ControllerCmd.ControllerState;
 import com.azwave.androidzwave.zwave.nodes.Node;
 import com.azwave.androidzwave.zwave.nodes.NodeListener;
+import com.hoho.android.usbserial.driver.CdcAcmSerialDriver;
+import com.hoho.android.usbserial.driver.ProbeTable;
 import com.hoho.android.usbserial.driver.UsbSerialDriver;
+import com.hoho.android.usbserial.driver.UsbSerialPort;
 import com.hoho.android.usbserial.driver.UsbSerialProber;
 
+import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -36,6 +41,8 @@ public class MainActivity extends Activity implements NodeListener,
 	private Button   clipboard;
 	private UsbManager usbManager;
 	private UsbSerialDriver serialDriver;
+	private UsbDeviceConnection serialConnection;
+	private UsbSerialPort serialPort;
 	private Manager zwaveManager;
 
 	private NodeListAdapter nodelistAdapter;
@@ -63,9 +70,9 @@ public class MainActivity extends Activity implements NodeListener,
 
 	@Override
 	public void finish() {
-		if (serialDriver != null) {
+		if (serialPort != null) {
 			try {
-				serialDriver.close();
+				serialPort.close();
 				zwaveManager.close();
 				listViewUpdate.close();
 			} catch (Exception x) {
@@ -75,12 +82,32 @@ public class MainActivity extends Activity implements NodeListener,
 	}
 
 	private void initUsbDriver() {
+
+		ProbeTable customTable = new ProbeTable();
+		customTable.addProduct(0x0658, 0x0200, CdcAcmSerialDriver.class);
+		UsbSerialProber prober = new UsbSerialProber(customTable);
+
 		usbManager = (UsbManager) getSystemService(Context.USB_SERVICE);
-		serialDriver = UsbSerialProber.acquire(usbManager);
+		List<UsbSerialDriver> availableDrivers = prober.findAllDrivers(usbManager);
+		if (availableDrivers.isEmpty()) {
+			Log.d("ZWAVE", "No available driver");
+			return;
+		}
+
+        // Open a connection to the first available driver.
+		serialDriver = availableDrivers.get(0);
+		serialConnection = usbManager.openDevice(serialDriver.getDevice());
+		if (serialConnection == null) {
+			// You probably need to call UsbManager.requestPermission(driver.getDevice(), ..)
+			Log.d("ZWAVE", "You probably need to call UsbManager.requestPermission(driver.getDevice()");
+			return;
+		}
+		serialPort = serialDriver.getPorts().get(0);
+
 		if(serialDriver == null)
 			Log.d("ZWAVE", "SerialDriver is null");
 		try {
-			zwaveManager = new Manager(this, serialDriver);
+			zwaveManager = new Manager(this, serialPort);
 			nodelistAdapter = new NodeListAdapter(this,
 					R.layout.activity_main_listitem_node);
 			nodelistAdapter.setNotifyOnChange(false);
@@ -94,12 +121,13 @@ public class MainActivity extends Activity implements NodeListener,
 			zwaveManager.setNodeListener(this);
 			zwaveManager.setControllerActionListener(this);
 
-			serialDriver.open();
+			serialPort.open(serialConnection);
+
 			initStartTime = System.currentTimeMillis();
 			zwaveManager.open();
 		} catch (Exception x) {
 			Log.d("ZWAVE", x.toString());
-			finish();
+//			finish();
 		}
 	}
 

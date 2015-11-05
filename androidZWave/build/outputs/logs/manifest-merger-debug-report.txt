@@ -19,7 +19,7 @@ ADDED from AndroidManifest.xml:7:5
 		ADDED from AndroidManifest.xml:7:19
 uses-sdk
 ADDED from AndroidManifest.xml:8:5
-MERGED from AndroidZ-Wave2:usbSerialLibrary:unspecified:7:5
+MERGED from com.hoho.android:usbSerialForAndroid:0.2.0-SNAPSHOT:7:5
 	android:targetSdkVersion
 		ADDED from AndroidManifest.xml:10:9
 		INJECTED from AndroidManifest.xml:0:0

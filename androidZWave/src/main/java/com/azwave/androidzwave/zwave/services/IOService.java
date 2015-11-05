@@ -28,6 +28,7 @@ import com.azwave.androidzwave.zwave.Defs;
 import com.azwave.androidzwave.zwave.items.QueueManager;
 import com.azwave.androidzwave.zwave.utils.Log;
 import com.hoho.android.usbserial.driver.UsbSerialDriver;
+import com.hoho.android.usbserial.driver.UsbSerialPort;
 
 /**
  * Original author: mike wakerly (opensource@hoho.com)
@@ -45,16 +46,16 @@ public class IOService implements Runnable {
 	private final ByteBuffer readBuffer = ByteBuffer.allocate(BUFFER_SIZE);
 	private IOServiceCommands service = IOServiceCommands.Stopped;
 
-	private UsbSerialDriver serialDriver;
+	private UsbSerialPort serialPort;
 	private IOServiceListener listener;
 	private Log log;
 	private QueueManager queue;
 
 	private LinkedList<byte[]> listData;
 
-	public IOService(UsbSerialDriver serialDriver, IOServiceListener listener,
+	public IOService(UsbSerialPort serialPort, IOServiceListener listener,
 			QueueManager queue, Log log) {
-		this.serialDriver = serialDriver;
+		this.serialPort = serialPort;
 		this.listener = listener;
 		this.log = log;
 		this.queue = queue;
@@ -102,7 +103,7 @@ public class IOService implements Runnable {
 			timeout = queue.isWaitingForACK() ? Defs.ACK_TIMEOUT : NORMAL_SPEED;
 		}
 
-		int len = serialDriver.read(readBuffer.array(), timeout);
+		int len = serialPort.read(readBuffer.array(), timeout);
 		if (len > 0) {
 			final byte[] data = new byte[len];
 			readBuffer.get(data, 0, len);

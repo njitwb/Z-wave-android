@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="debug"><source path="/work/Z-wave-android/usbSerialForAndroid/build/intermediates/bundles/debug/res"/></dataSet><dataSet config="main"><source path="/work/Z-wave-android/usbSerialForAndroid/src/androidTest/res"/><source path="/work/Z-wave-android/usbSerialForAndroid/build/generated/res/rs/androidTest/debug"/><source path="/work/Z-wave-android/usbSerialForAndroid/build/generated/res/generated/androidTest/debug"/></dataSet><mergedItems/></merger>

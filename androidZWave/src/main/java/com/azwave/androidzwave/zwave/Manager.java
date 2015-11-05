@@ -40,7 +40,7 @@ import com.azwave.androidzwave.zwave.nodes.NodeManager;
 import com.azwave.androidzwave.zwave.utils.Log;
 import com.azwave.androidzwave.zwave.utils.XMLManager;
 import com.azwave.androidzwave.zwave.utils.XMLManagerAndroid;
-import com.hoho.android.usbserial.driver.UsbSerialDriver;
+import com.hoho.android.usbserial.driver.UsbSerialPort;
 
 public class Manager {
 
@@ -51,11 +51,11 @@ public class Manager {
 	private QueueManager zwavequeueManager;
 
 	private Context context;
-	private UsbSerialDriver serialDriver;
+	private UsbSerialPort serialPort;
 
-	public Manager(Context context, UsbSerialDriver serialDriver) {
+	public Manager(Context context, UsbSerialPort serialPort) {
 		this.context = context;
-		this.serialDriver = serialDriver;
+		this.serialPort = serialPort;
 
 		zwaveLog = new Log(context, R.layout.activity_main_listitem_log);
 		zwaveXMLManager = new XMLManagerAndroid(context, zwaveLog);
@@ -63,7 +63,7 @@ public class Manager {
 		zwaveNodeManager = new NodeManager(zwavequeueManager, zwaveXMLManager,
 				zwaveLog);
 		zwaveDriver = new Driver(zwavequeueManager, zwaveNodeManager,
-				zwaveXMLManager, serialDriver, zwaveLog);
+				zwaveXMLManager, serialPort, zwaveLog);
 	}
 
 	public void setNodeListener(NodeListener listener) {

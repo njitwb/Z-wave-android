@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AndroidZ-Wave2.iml" filepath="$PROJECT_DIR$/AndroidZ-Wave2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Z-wave-android.iml" filepath="$PROJECT_DIR$/Z-wave-android.iml" />
       <module fileurl="file://$PROJECT_DIR$/androidZWave/androidZWave.iml" filepath="$PROJECT_DIR$/androidZWave/androidZWave.iml" />
-      <module fileurl="file://$PROJECT_DIR$/usbSerialLibrary/usbSerialLibrary.iml" filepath="$PROJECT_DIR$/usbSerialLibrary/usbSerialLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/usbSerialForAndroid/usbSerialForAndroid.iml" filepath="$PROJECT_DIR$/usbSerialForAndroid/usbSerialForAndroid.iml" />
     </modules>
   </component>
 </project>

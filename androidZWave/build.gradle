@@ -19,6 +19,6 @@ android {
 }
 
 dependencies {
-    compile project(':usbSerialLibrary')
+    compile project(':usbSerialForAndroid')
     compile 'com.android.support:support-v4:18.0.0'
 }
