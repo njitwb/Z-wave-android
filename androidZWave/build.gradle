@@ -1,13 +1,18 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 15
+    compileSdkVersion 19
     buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "com.azwave.androidzwave"
-        minSdkVersion 15
-        targetSdkVersion 17
+        minSdkVersion 19
+        targetSdkVersion 19
+
+        ndk{
+            moduleName "SerialDriver"
+            ldLibs "log"
+        }
     }
 
     buildTypes {
@@ -19,5 +24,5 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:18.0.0'
+    compile 'com.android.support:support-v4:23.0.1'
 }

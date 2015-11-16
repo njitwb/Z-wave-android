@@ -75,8 +75,10 @@ public class MainActivity extends Activity implements NodeListener,
 	private void initUsbDriver() {
 //		usbManager = (UsbManager) getSystemService(Context.USB_SERVICE);
 //		serialDriver = UsbSerialProber.acquire(usbManager);
-		if(serialDriver == null)
+		if(serialDriver == null) {
+			serialDriver = new UsbSerialDriver();
 			Log.d("ZWAVE", "SerialDriver is null");
+		}
 		try {
 			zwaveManager = new Manager(this, serialDriver);
 			nodelistAdapter = new NodeListAdapter(this,

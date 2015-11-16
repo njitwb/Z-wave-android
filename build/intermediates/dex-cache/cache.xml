@@ -2,18 +2,25 @@
 <items version="2" >
 
     <item
-        jar="/work/Z-wave-android/androidZWave/build/intermediates/exploded-aar/Z-wave-android/usbSerialLibrary/unspecified/jars/classes.jar"
+        jar="/work/Z-wave-android/androidZWave/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="9733e4ac7e4356b17665a72f55fa4c9ea7dbe6d4">
-        <dex dex="/work/Z-wave-android/androidZWave/build/intermediates/pre-dexed/debug/classes-9cb2d326978c7e892af73b9f87db02b9a9c8fbec.jar" />
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/work/Z-wave-android/androidZWave/build/intermediates/pre-dexed/debug/classes-13da11b09d294fd48971fff377c3acbb6ec2e8ba.jar" />
     </item>
     <item
-        jar="/work/android-sdk-linux/extras/android/m2repository/com/android/support/support-v4/18.0.0/support-v4-18.0.0.jar"
+        jar="/work/Z-wave-android/androidZWave/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="44ec51e9d395a47aab135e5e1b556c0007442156">
-        <dex dex="/work/Z-wave-android/androidZWave/build/intermediates/pre-dexed/debug/support-v4-18.0.0-0b3a41539e8dcba707af03af189867b03e6b8e18.jar" />
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="/work/Z-wave-android/androidZWave/build/intermediates/pre-dexed/debug/internal_impl-23.0.1-55d41af3f3d3f2b3d1d4c181d5ef66b2e21c223c.jar" />
+    </item>
+    <item
+        jar="/work/android-sdk-linux/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="/work/Z-wave-android/androidZWave/build/intermediates/pre-dexed/debug/support-annotations-23.0.1-b3f1ccee08968cdb7970d34b63249064c1c574eb.jar" />
     </item>
 
 </items>

@@ -35,13 +35,15 @@ public class SafeCast {
 
 	public static byte nodeIdFromStream(byte[] data) {
 		byte nodeId = 0;
-
-		if (data[1] >= 5) {
-			switch (data[3]) {
-			case Defs.FUNC_ID_APPLICATION_COMMAND_HANDLER:
-			case Defs.FUNC_ID_ZW_APPLICATION_UPDATE:
-				nodeId = data[5];
-				break;
+		if(data.length > 1) {
+			if (data[1] >= 5 && data.length > 3) {
+				switch (data[3]) {
+					case Defs.FUNC_ID_APPLICATION_COMMAND_HANDLER:
+					case Defs.FUNC_ID_ZW_APPLICATION_UPDATE:
+						if(data.length > 5)
+							nodeId = data[5];
+						break;
+				}
 			}
 		}
 

@@ -1,5 +1,6 @@
 package com.azwave.androidzwave;
 
+import java.io.IOError;
 import java.io.IOException;
 
 /**
@@ -12,8 +13,21 @@ public class UsbSerialDriver {
      *
      * @throws IOException on error opening or initializing the device.
      */
-    public void open() {
 
+    public static final String DevicePath = "/dev/ttyACM0";
+
+    public native int SerialOpen(String path);
+    public native void SerialClose();
+    public native int SerialWrite(final byte[] src);
+    public native int SerialRead(final byte[] dest);
+
+    protected final Object mReadLock = new Object();
+    protected final Object mWriteLock = new Object();
+
+    public void open() throws IOException {
+        int ret = SerialOpen(DevicePath);
+        if (ret != 0)
+            throw new IOException("Open the device error!");
     }
 
     /**
@@ -21,8 +35,8 @@ public class UsbSerialDriver {
      *
      * @throws IOException on error closing the device.
      */
-    public void close() {
-
+    public void close() throws IOException {
+        SerialClose();
     }
 
     /**
@@ -33,8 +47,12 @@ public class UsbSerialDriver {
      * @return the actual number of bytes read
      * @throws IOException if an error occurred during reading
      */
-    public int read(final byte[] dest, final int timeoutMillis) {
-        return 0;
+    public int read(final byte[] dest, final int timeoutMillis) throws IOException {
+        int nread;
+        synchronized (mReadLock) {
+            nread = SerialRead(dest);
+        }
+        return nread;
     }
 
     /**
@@ -45,8 +63,16 @@ public class UsbSerialDriver {
      * @return the actual number of bytes written
      * @throws IOException if an error occurred during writing
      */
-    public int write(final byte[] src, final int timeoutMillis) {
-        return 0;
+    public int write(final byte[] src, final int timeoutMillis) throws IOException {
+        int nwrite;
+        synchronized (mWriteLock) {
+            nwrite = SerialWrite(src);
+        }
+        return nwrite;
+    }
+
+    static {
+        System.loadLibrary("SerialDriver");
     }
 
 }
